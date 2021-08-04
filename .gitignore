@@ -1,0 +1,17 @@
+.DS_Store
+.data/
+.docs/
+.dump/
+.idea/
+coverage/
+journal/
+
+*.db
+*.iml
+*.log
+*.rdb
+*.zip
+
+.todo.md
+
+web-component/

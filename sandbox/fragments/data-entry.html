@@ -1,0 +1,148 @@
+<h2>Data Entry</h2>
+
+<section id="data-entry-button">
+  <h3>Buttons</h3>
+  <div class="sandbox">
+  </div>
+</section>
+<section id="data-entry-input">
+  <h3>Input</h3>
+  <div class="sandbox">
+    <figure>
+      <label for="demo">
+        <span>Input Label</span>
+        <input id="demo" type="text">
+      </label>
+      <figcaption>Text Input</figcaption>
+    </figure>
+  </div>
+</section>
+<template id="sandbox-icon">
+  <svg
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+    ></polygon>
+  </svg>
+</template>
+<link rel="stylesheet" href="/core/data-entry.css">
+<script type="module">
+  import "/core/highlight/highlight.js";
+
+  const label = "Click Me!";
+  const template = this.querySelector("template#sandbox-icon");
+  const sandbox = this.querySelector(".sandbox");
+
+  [
+    { label },
+    { label, icon: 1 },
+    { label, icon: 2 },
+    { label: null, icon: 1 }
+  ].forEach(
+    ({ label, icon = 0 }) => {
+      [
+        [],
+        ["--pill"],
+        ["--secondary"],
+        ["--secondary", "--pill"],
+        ["--tertiary"],
+        ["--tertiary", "--pill"],
+        ["--text"],
+        ["--text", "--pill"],
+        ["--medium"],
+        ["--pill", "--medium"],
+        ["--secondary", "--medium"],
+        ["--secondary", "--pill", "--medium"],
+        ["--tertiary", "--medium"],
+        ["--tertiary", "--pill", "--medium"],
+        ["--text", "--medium"],
+        ["--text", "--pill", "--medium"],
+        ["--large"],
+        ["--pill", "--large"],
+        ["--secondary", "--large"],
+        ["--secondary", "--pill", "--large"],
+        ["--tertiary", "--large"],
+        ["--tertiary", "--pill", "--large"],
+        ["--text", "--large"],
+        ["--text", "--pill", "--large"],
+        ["--huge"],
+        ["--pill", "--huge"],
+        ["--secondary", "--huge"],
+        ["--secondary", "--pill", "--huge"],
+        ["--tertiary", "--huge"],
+        ["--tertiary", "--pill", "--huge"],
+        ["--text", "--huge"],
+        ["--text", "--pill", "--huge"]
+      ].forEach((classList) => {
+        const figure = document.createElement("figure");
+        const caption = document.createElement("figcaption");
+        const button = document.createElement("button");
+        const highlight = document.createElement("iy-highlight");
+        let svg;
+
+        if (icon === 0) {
+          button.textContent = label;
+        } else if (icon === 1 || icon === 2) {
+          svg = template.cloneNode(true).content.firstElementChild;
+          if (icon === 1) {
+            button.appendChild(svg);
+          }
+          if (label) {
+            const span = document.createElement("span");
+            span.textContent = label;
+            button.appendChild(span);
+          }
+          if (icon === 2) {
+            button.appendChild(svg);
+          }
+        }
+        if (classList.length > 0) button.classList.add(...classList);
+        button.tabIndex = -1;
+
+        caption.textContent = `${
+          classList.includes("--medium") ? "Medium " :
+            classList.includes("--large") ? "Large " :
+              classList.includes("--huge") ? "Huge " :
+                ""
+        }${
+          classList.includes("--secondary") ? "Secondary " :
+            classList.includes("--tertiary") ? "Tertiary " :
+              classList.includes("--text") ? "Text " :
+                ""
+        }${
+          classList.includes("--pill") ? "Pill " : ""
+        }Button ${icon > 0 ? "with icon" : ""}`;
+
+        let html = button.outerHTML.replace(label, "Label");
+
+        if (svg) {
+          html = html.replace(svg.outerHTML, "<icon>");
+        }
+
+        highlight.dataset.language = "xml";
+        highlight.innerText = html.trim();
+
+        figure.appendChild(button);
+        figure.appendChild(caption);
+
+        figure.appendChild(highlight);
+
+        sandbox.appendChild(figure);
+      });
+    }
+  );
+
+  if (window.location.hash) {
+    const hashElement = window.document.querySelector(window.location.hash);
+    window.setTimeout(
+      () => window.document.body.scrollTo(hashElement.offsetLeft, hashElement.offsetTop),
+      500
+    );
+  }
+
+</script>

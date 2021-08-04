@@ -1,0 +1,190 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+html {
+  --monochrome-100: #FCFCFC;
+  --monochrome-200: #F7F7F7;
+  --monochrome-300: #EFF0F6;
+  --monochrome-400: #D9DBE9;
+  --monochrome-500: #A0A3BD;
+  --monochrome-600: #6E7191;
+  --monochrome-700: #4E4B66;
+  --monochrome-800: #262338;
+  --monochrome-900: #14142B;
+
+  --blue-400: #2AA8F8;
+
+  --purple-500: #B78CFF;
+  --purple-700: #4700AB;
+  --purple-800: #14142A;
+
+  --teal-100: #E0FFF8;
+  --teal-200: #9CFBEF;
+  --teal-300: #6DFDED;
+  --teal-400: #41F8E1;
+  --teal-500: #03CFBB;
+  --teal-600: #00857A;
+  --teal-700: #007A70;
+  --teal-800: #005649;
+
+  --yellow-300: #FFDF9A;
+
+  --warm-gray-400: #A6A0A0;
+
+  --color-scrollbar-thumb: var(--monochrome-700);
+
+  --color-background: var(--monochrome-200);
+  --color-input: var(--monochrome-300);
+  --color-separator: var(--monochrome-400);
+  --color-placeholder: var(--monochrome-500);
+  --color-label: var(--monochrome-600);
+  --color-body-text: var(--monochrome-700);
+
+  --color-low-contrast: #FFFFFF;
+  --color-high-contrast: #000000;
+
+  --color-primary-light: var(--teal-200);
+  --color-primary-default: var(--teal-500);
+  --color-primary-dark: var(--teal-600);
+
+  --color-top-navigation: var(--color-low-contrast);
+
+  --color-highlight-comment: var(--warm-gray-400);
+  --color-highlight-keyword: var(--purple-500);
+  --color-highlight-function: var(--teal-200);
+  --color-highlight-number: var(--blue-400);
+  --color-highlight-string: var(--yellow-300);
+  --color-highlight-variable: var(--teal-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --color-background: var(--monochrome-900);
+    --color-input: var(--monochrome-700);
+    --color-separator: var(--monochrome-700);
+    --color-placeholder: var(--monochrome-700);
+    --color-label: var(--monochrome-400);
+    --color-body-text: var(--monochrome-100);
+
+    --color-low-contrast: #000000;
+    --color-high-contrast: #FFFFFF;
+
+    --color-primary-light: var(--teal-200);
+    --color-primary-default: var(--teal-400);
+    --color-primary-dark: var(--teal-800);
+
+    --color-top-navigation: var(--monochrome-800);
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-body-text);
+  font-family: "Fira Sans", sans-serif;
+  font-size: 16px;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 296px auto 296px;
+  grid-column-gap: 24px;
+  grid-template-rows: auto;
+  grid-template-areas:
+      "top top top"
+      "left content content";
+}
+
+.page__top-navigation {
+  align-items: center;
+  background-color: var(--color-top-navigation);
+  box-sizing: border-box;
+  display: flex;
+  grid-area: top;
+  height: 95px;
+  padding: 24px;
+}
+
+.page__top-navigation .logo {
+  fill: var(--color-primary-default);
+  height: 40px;
+  width: auto;
+}
+
+.page__top-navigation > [role="heading"] ~ span {
+  color: var(--color-primary-default);
+  font-family: "Fira Code", monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  margin-left: 1em;
+  text-transform: uppercase;
+}
+
+.page__side-navigation {
+  grid-area: left;
+  padding: 64px 32px;
+}
+
+.page__side-navigation ul {
+  font-size: 0.9375rem;
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+.page__side-navigation > ul > li > span {
+  border-bottom: 1px solid var(--color-separator);
+  color: var(--color-label);
+  display: block;
+  letter-spacing: 0.05em;
+  padding: 16px 0;
+  margin: 24px 0;
+}
+
+.page__side-navigation > ul > li:first-child > span {
+  margin-top: 0;
+}
+
+.page__side-navigation > ul ul li {
+  border-radius: 12px;
+  font-weight: 600;
+  margin-left: 40px;
+  padding: 16px;
+}
+
+.page__side-navigation ul li a:hover {
+  color: var(--color-primary-default);
+}
+
+.page__side-navigation ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page__content {
+  grid-area: content;
+  padding: 64px 0;
+}
+
+.page__content:last-child {
+  margin-right: 32px;
+}
+
+.page__content h2 {
+  font-size: 2rem;
+}
+
+.page__content h2:first-child {
+  margin-top: 0;
+}
+
+.page__content h3 {
+  font-size: 1.5rem;
+}

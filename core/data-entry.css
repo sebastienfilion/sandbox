@@ -1,0 +1,259 @@
+button {
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: var(--color-primary-default);
+  color: var(--monochrome-100);
+  display: flex;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  height: 2.5rem;
+  justify-content: center;
+  letter-spacing: 0.025rem;
+  padding: 0 1.25rem;
+  outline: none;
+}
+
+button svg, button img {
+  height: 1rem;
+  width: 1rem;
+}
+
+button svg {
+  fill: none;
+  stroke: var(--monochrome-100);
+}
+
+button > svg:first-child ~ *,
+button > img:first-child ~ * {
+  margin-left: 0.75rem;
+}
+
+button > *:first-child ~ svg,
+button > *:first-child ~ img {
+  margin-left: 0.75rem;
+}
+
+button:active {
+  color: var(--color-low-contrast);
+  background-color: var(--color-high-contrast) !important;
+}
+
+button:active svg {
+  stroke: var(--color-low-contrast);
+}
+
+button:hover {
+  background-color: var(--teal-600);
+}
+
+button:focus {
+  box-shadow: 0 0 0 8px var(--color-primary-light);
+}
+
+button[disabled] {
+  opacity: 0.5;
+}
+
+button.--medium {
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  height: 3.5rem;
+  padding: 0 1.5rem;
+}
+
+button.--large {
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  height: 4rem;
+  padding: 0 2rem;
+}
+
+button.--huge {
+  border-radius: 16px;
+  font-size: 1.125rem;
+  height: 4.5rem;
+  padding: 0 2rem;
+}
+
+button.--medium svg,
+button.--medium img,
+button.--large svg,
+button.--large img,
+button.--huge svg,
+button.--huge img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+button.--large > svg:first-child ~ *,
+button.--large > img:first-child ~ *,
+button.--huge > svg:first-child ~ *,
+button.--huge > img:first-child ~ * {
+  margin-left: 1rem;
+}
+
+button.--large > *:first-child ~ svg,
+button.--large > *:first-child ~ img,
+button.--huge > *:first-child ~ svg,
+button.--huge > *:first-child ~ img {
+  margin-left: 1rem;
+}
+
+button.--pill {
+  border-radius: 20px;
+}
+
+button.--pill.--medium {
+  border-radius: 28px;
+}
+
+button.--pill.--large {
+  border-radius: 32px;
+}
+
+button.--pill.--huge {
+  border-radius: 36px;
+}
+
+button.--secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary-default);
+  color: var(--color-primary-default);
+}
+
+button.--secondary svg {
+  stroke: var(--color-primary-default);
+}
+
+button.--secondary:active {
+  background-color: transparent !important;
+  border: 2px solid var(--color-high-contrast) !important;
+  color: var(--color-high-contrast) !important;
+}
+
+button.--secondary:active svg {
+  stroke: var(--color-high-contrast) !important;
+}
+
+button.--secondary:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+}
+
+button.--secondary:hover svg {
+  stroke: var(--color-primary-dark);
+}
+
+button.--tertiary {
+  background-color: transparent;
+  border: 2px solid var(--color-separator);
+  color: var(--color-primary-default);
+}
+
+button.--tertiary svg {
+  stroke: var(--color-primary-default);
+}
+
+button.--tertiary:active {
+  background-color: transparent !important;
+  border: 2px solid var(--color-high-contrast) !important;
+  color: var(--color-high-contrast) !important;
+}
+
+button.--tertiary:active svg {
+  stroke: var(--color-high-contrast) !important;
+}
+
+button.--tertiary:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-placeholder) !important;
+  color: var(--color-primary-dark);
+}
+
+button.--tertiary:hover svg {
+  stroke: var(--color-primary-dark);
+}
+
+button.--text {
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary-default);
+}
+
+button.--text svg {
+  stroke: var(--color-primary-default);
+}
+
+button.--text:active {
+  background-color: transparent !important;
+  border: none;
+  color: var(--color-high-contrast) !important;
+}
+
+button.--text:active svg {
+  stroke: var(--color-high-contrast) !important;
+}
+
+button.--text:hover {
+  background-color: transparent;
+  border: none;
+  color: var(--color-primary-dark);
+}
+
+button.--text:hover svg {
+  stroke: var(--color-primary-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  button {
+    color: var(--color-primary-dark);
+  }
+
+  button svg {
+    stroke: var(--color-primary-dark);
+  }
+
+  button:hover {
+    background-color: var(--color-primary-light);
+  }
+
+  button:focus {
+    box-shadow: 0 0 0 8px var(--color-input);
+  }
+
+  button.--secondary:hover {
+    background-color: transparent;
+    border: 2px solid var(--color-primary-light);
+    color: var(--color-primary-light);
+  }
+
+  button.--secondary:hover svg {
+    stroke: var(--color-primary-light);
+  }
+
+  button.--tertiary:hover {
+    color: var(--color-primary-light);
+  }
+
+  button.--secondary:active svg,
+  button.--tertiary:active svg,
+  button.--text:active svg {
+    stroke: var(--color-high-contrast) !important;
+  }
+
+  button.--text:hover {
+    color: var(--color-primary-light);
+  }
+
+  button.--tertiary:hover svg {
+    stroke: var(--color-primary-light);
+  }
+
+  button.--text:hover svg {
+    stroke: var(--color-primary-light);
+  }
+}
