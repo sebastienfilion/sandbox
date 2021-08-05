@@ -5,21 +5,21 @@
   <div class="sandbox">
     <figure>
       <iy-highlight data-language="javascript">
-const add = (x, y) => x + y;
+<code slot="code">const add = (x, y) => x + y;
 const sum = (xs) => xs.reduce(add, 0);
 
 const t = sum([42, 24, 12]);
 
-// t === 78
+// t === 78</code>
       </iy-highlight>
     </figure>
     <figure>
       <iy-highlight data-language="javascript">
-fetch("/demo.html")
+<code slot="code">fetch("/demo.html")
   .then((response) => response.json())
   .then((html) => {
     e.innerHTML = html;
-  });
+});</code>
       </iy-highlight>
     </figure>
   </div>
@@ -28,18 +28,16 @@ fetch("/demo.html")
   <h3>HTML</h3>
   <div class="sandbox">
     <figure>
-      <iy-highlight data-language="xml">
-&lt;!doctype html&gt;
+      <iy-highlight data-language="xml"><code slot="code">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt;
+  &lt;meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt;
   &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
-  &lt;title&gt;Sandbox&lt;/title&gt;
+&lt;title&gt;Sandbox&lt;/title&gt;
 &lt;/head&gt;
-&lt;body&gt;
-      </iy-highlight>
+&lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;</code></iy-highlight>
     </figure>
   </div>
 </section>

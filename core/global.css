@@ -88,29 +88,59 @@ body {
   font-size: 16px;
 }
 
+h1, h2, h3, h4, h5, h6, h7, h8 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
 .page {
   display: grid;
-  grid-template-columns: 296px auto 296px;
+  grid-template-columns: 256px auto 256px;
   grid-column-gap: 24px;
-  grid-template-rows: auto;
+  grid-template-rows: minmax(70px, max-content);
   grid-template-areas:
       "top top top"
       "left content content";
+  min-height: 100%;
 }
 
 .page__top-navigation {
   align-items: center;
   background-color: var(--color-top-navigation);
   box-sizing: border-box;
+  border-bottom: 1px solid var(--color-separator);
   display: flex;
   grid-area: top;
-  height: 95px;
+  height: 72px;
   padding: 24px;
 }
 
 .page__top-navigation .logo {
   fill: var(--color-primary-default);
-  height: 40px;
+  height: 32px;
   width: auto;
 }
 
@@ -118,15 +148,16 @@ body {
   color: var(--color-primary-default);
   font-family: "Fira Code", monospace;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.15rem;
   margin-left: 1em;
   text-transform: uppercase;
 }
 
 .page__side-navigation {
+  background-color: var(--color-top-navigation);
   grid-area: left;
-  padding: 64px 32px;
+  padding: 64px 24px;
 }
 
 .page__side-navigation ul {
@@ -154,8 +185,8 @@ body {
 
 .page__side-navigation > ul ul li {
   border-radius: 12px;
-  font-weight: 600;
-  margin-left: 40px;
+  font-weight: 500;
+  margin-left: 24px;
   padding: 16px;
 }
 
@@ -170,21 +201,9 @@ body {
 
 .page__content {
   grid-area: content;
-  padding: 64px 0;
-}
-
-.page__content:last-child {
-  margin-right: 32px;
-}
-
-.page__content h2 {
-  font-size: 2rem;
+  padding: 64px;
 }
 
 .page__content h2:first-child {
   margin-top: 0;
-}
-
-.page__content h3 {
-  font-size: 1.5rem;
 }

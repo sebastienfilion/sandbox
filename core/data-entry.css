@@ -8,16 +8,18 @@ button {
   display: flex;
   font-family: inherit;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 500;
   height: 2.5rem;
   justify-content: center;
   letter-spacing: 0.025rem;
   padding: 0 1.25rem;
   outline: none;
+  white-space: nowrap;
 }
 
 button svg, button img {
   height: 1rem;
+  pointer-events: none;
   width: 1rem;
 }
 
@@ -45,7 +47,9 @@ button:active svg {
   stroke: var(--color-low-contrast);
 }
 
-button:hover {
+button:hover,
+button.--active,
+button[data-active] {
   background-color: var(--teal-600);
 }
 
@@ -217,7 +221,9 @@ button.--text:hover svg {
     stroke: var(--color-primary-dark);
   }
 
-  button:hover {
+  button:hover,
+  button.--active,
+  button[data-active] {
     background-color: var(--color-primary-light);
   }
 

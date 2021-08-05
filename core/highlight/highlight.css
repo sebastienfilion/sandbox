@@ -1,113 +1,40 @@
-iy-highlight {
+:host {
   background-color: #080811;
   box-sizing: border-box;
+  color: #FCFCFC;
   border-radius: 12px;
+  display: block;
+  font-family: "Fira Code", monospace;
+  font-size: inherit;
+  line-height: 1.5em;
   padding: 8px;
 }
 
-iy-highlight pre,
-iy-highlight pre code {
+:host pre,
+:host pre code {
   margin: 0;
   padding: 0;
 }
 
-iy-highlight pre code {
-  color: #FCFCFC;
-  display: block;
-  font-family: "Fira Code", monospace;
-  font-size: 0.9375rem;
-  line-height: 1.5em;
-  overflow: auto;
+:host pre {
+  box-sizing: border-box;
   padding: 16px;
+  overflow: auto;
 }
 
-iy-highlight pre code::-webkit-scrollbar {
+:host pre::-webkit-scrollbar {
   height: 8px;
   width: 8px;
   margin: 3px;
 }
 
-iy-highlight pre code::-webkit-scrollbar-thumb {
+:host pre::-webkit-scrollbar-thumb {
   background-color: var(--color-scrollbar-thumb);
   border-radius: 10px;
   opacity: 0.5;
 }
 
-iy-highlight:hover pre code::-webkit-scrollbar-thumb {
+:host(:hover) pre::-webkit-scrollbar-thumb {
   opacity: 1;
 }
 
-.hljs-tag,
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-strong,
-.hljs-name {
-  color: var(--color-highlight-keyword);
-}
-
-.hljs-tag .hljs-attr {
-  color: var(--color-highlight-variable);
-}
-
-.hljs-code {
-  color: #66d9ef;
-}
-
-.hljs-attribute,
-.hljs-symbol,
-.hljs-regexp,
-.hljs-link {
-  color: #bf79db;
-}
-
-.hljs-bullet,
-.hljs-subst,
-.hljs-title,
-.hljs-section,
-.hljs-emphasis,
-.hljs-type,
-.hljs-built_in,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-tag,
-.hljs-template-variable {
-  color: var(--color-highlight-variable);
-}
-
-.hljs-string {
-  color: var(--color-highlight-string);
-}
-
-.hljs-title.class_,
-.hljs-class .hljs-title {
-  color: inherit;
-}
-
-.hljs-comment,
-.hljs-quote,
-.hljs-deletion,
-.hljs-meta {
-  color: var(--color-highlight-comment);
-}
-
-.hljs-tag .hljs-attr,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-doctag,
-.hljs-title,
-.hljs-section,
-.hljs-type,
-.hljs-selector-id {
-  font-weight: 600;
-}
-
-.hljs-number {
-  color: var(--color-highlight-number);
-}
-
-/*.hljs-title.function_ {
-  color: var(--color-highlight-function);
-}*/

@@ -1,10 +1,9 @@
 <h2>Data Entry</h2>
 
-<section id="data-entry-button">
-  <h3>Buttons</h3>
-  <div class="sandbox">
-  </div>
-</section>
+<iy-sandbox id="data-entry-button">
+  <h3 slot="title">Buttons</h3>
+  <div slot="elements"></div>
+</iy-sandbox>
 <section id="data-entry-input">
   <h3>Input</h3>
   <div class="sandbox">
@@ -31,12 +30,14 @@
   </svg>
 </template>
 <link rel="stylesheet" href="/core/data-entry.css">
+<script src="/sandbox/sandbox/sandbox.js" type="module"></script>
+<script src="/sandbox/sandbox/sandbox-figure.js" type="module"></script>
 <script type="module">
   import "/core/highlight/highlight.js";
 
   const label = "Click Me!";
   const template = this.querySelector("template#sandbox-icon");
-  const sandbox = this.querySelector(".sandbox");
+  const sandbox = this.querySelector(`#data-entry-button [slot="elements"]`);
 
   [
     { label },
@@ -79,11 +80,13 @@
         ["--text", "--huge"],
         ["--text", "--pill", "--huge"]
       ].forEach((classList) => {
-        const figure = document.createElement("figure");
-        const caption = document.createElement("figcaption");
+        const figure = document.createElement("iy-sandbox-figure");
+        // const caption = document.createElement("figcaption");
         const button = document.createElement("button");
-        const highlight = document.createElement("iy-highlight");
+        // const highlight = document.createElement("iy-highlight");
         let svg;
+
+        button.slot = "element";
 
         if (icon === 0) {
           button.textContent = label;
@@ -104,7 +107,7 @@
         if (classList.length > 0) button.classList.add(...classList);
         button.tabIndex = -1;
 
-        caption.textContent = `${
+        figure.dataset.title = `${
           classList.includes("--medium") ? "Medium " :
             classList.includes("--large") ? "Large " :
               classList.includes("--huge") ? "Huge " :
@@ -118,19 +121,23 @@
           classList.includes("--pill") ? "Pill " : ""
         }Button ${icon > 0 ? "with icon" : ""}`;
 
-        let html = button.outerHTML.replace(label, "Label");
+        // let html = button.outerHTML.replace(label, "Label");
+        //
+        // if (svg) {
+        //   html = html.replace(svg.outerHTML, "<icon>");
+        // }
 
-        if (svg) {
-          html = html.replace(svg.outerHTML, "<icon>");
-        }
+        // highlight.dataset.language = "xml";
 
-        highlight.dataset.language = "xml";
-        highlight.innerText = html.trim();
+        // const slot = window.document.createElement("code");
+        // slot.slot = "code";
+        // slot.textContent = html.trim();
+
+        // highlight.appendChild(slot);
 
         figure.appendChild(button);
-        figure.appendChild(caption);
 
-        figure.appendChild(highlight);
+        // figure.appendChild(highlight);
 
         sandbox.appendChild(figure);
       });
