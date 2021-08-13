@@ -1,8 +1,21 @@
 <style>
+  :host([data-selectable="true"]:not([data-tool="true"])) figure:hover {
+    background-color: var(--color-placeholder);
+  }
+
+  :host([data-tool="true"]) {
+    grid-column: auto / span 2;
+    grid-row: auto / span 2;
+  }
+
   :host {
     display: block;
     height: 100%;
     width: 100%;
+  }
+
+  :host([data-tool="true"]) figure {
+    border-width: 3px;
   }
 
   figure {
@@ -31,20 +44,37 @@
     text-transform: uppercase;
   }
 
-  figure iy-highlight {
+  :host([data-tool="false"]) .tools {
+    display: none;
+  }
+
+  .tools {
+    margin: 32px 0;
+  }
+
+  .tools, .tools iy-highlight {
     width: 100%;
-
   }
 
-  figure * ~ iy-highlight {
-    margin-top: 32px;
+  .states {
+    display: flex;
+    justify-content: space-around;
+    margin: 32px 0;
   }
 
-  h3 ~ .sandbox {
-    margin-top: 48px;
+  label {
+    color: var(--color-label);
+    display: block;
+    margin: 0 8px;
   }
+
+  label input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
 </style>
 <figure>
   <slot name="element"></slot>
+  <div class="tools"></div>
   <figcaption></figcaption>
 </figure>

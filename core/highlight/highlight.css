@@ -2,39 +2,120 @@
   background-color: #080811;
   box-sizing: border-box;
   color: #FCFCFC;
+  contain: content;
   border-radius: 12px;
   display: block;
   font-family: "Fira Code", monospace;
   font-size: inherit;
   line-height: 1.5em;
-  padding: 8px;
+  max-height: 25rem;
+  padding: 16px;
+  overflow: auto;
+
 }
 
 :host pre,
-:host pre code {
+:host code {
   margin: 0;
   padding: 0;
 }
 
 :host pre {
-  box-sizing: border-box;
-  padding: 16px;
-  overflow: auto;
+  height: 1.5em;
 }
 
-:host pre::-webkit-scrollbar {
+:host code {
+  box-sizing: border-box;
+  display: block;
+  height: inherit;
+  /*height: -webkit-fill-available;*/
+  padding: 8px;
+  width: fit-content;
+}
+
+:host::-webkit-scrollbar {
   height: 8px;
   width: 8px;
   margin: 3px;
 }
 
-:host pre::-webkit-scrollbar-thumb {
+:host::-webkit-scrollbar-thumb {
   background-color: var(--color-scrollbar-thumb);
   border-radius: 10px;
   opacity: 0.5;
 }
 
-:host(:hover) pre::-webkit-scrollbar-thumb {
+:host(:hover)::-webkit-scrollbar-thumb {
   opacity: 1;
 }
 
+.hljs-tag,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-strong,
+.hljs-name {
+  color: var(--color-highlight-keyword);
+}
+
+.hljs-tag .hljs-attr {
+  color: var(--color-highlight-variable);
+}
+
+.hljs-code {
+  color: #66d9ef;
+}
+
+.hljs-attribute,
+.hljs-symbol,
+.hljs-regexp,
+.hljs-link {
+  color: #bf79db;
+}
+
+.hljs-bullet,
+.hljs-subst,
+.hljs-title,
+.hljs-section,
+.hljs-emphasis,
+.hljs-type,
+.hljs-built_in,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: var(--color-highlight-variable);
+}
+
+.hljs-string {
+  color: var(--color-highlight-string);
+}
+
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: inherit;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion,
+.hljs-meta {
+  color: var(--color-highlight-comment);
+}
+
+.hljs-tag .hljs-attr,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag,
+.hljs-title,
+.hljs-section,
+.hljs-type,
+.hljs-selector-id {
+  font-weight: 500;
+}
+
+.hljs-number {
+  color: var(--color-highlight-number);
+}

@@ -1,19 +1,6 @@
 <style>
   @import url("/core/data-entry.css");
 
-  ::slotted([slot="elements"]) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(224px, auto));
-    grid-template-rows: auto;
-    grid-column-gap: 24px;
-    grid-row-gap: 24px;
-  }
-
-  :host([data-layout="lines"]) ::slotted([slot="elements"]) {
-    display: flex;
-    flex-direction: column;
-  }
-
   :host {
     border-bottom: 1px solid var(--color-separator);
     display: block;
@@ -22,32 +9,74 @@
     position: relative;
   }
 
-  .layout-toggle {
+  p[slot="description"] {
+    color: red;
+  }
+
+  ::slotted(iy-highlight) {
+    max-height: 25em;
+    width: 100%;
+  }
+
+  .elements {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(224px, auto));
+    grid-template-rows: auto;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+  }
+
+  :host([data-layout="lines"]) .elements {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(40px, auto));
+    grid-column-gap: 24px;
     position: absolute;
     right: 0;
     top: 0;
   }
+
+  :host([data-tool="true"]) .actions button[name="tool-toggle"] {
+    border-color: var(--color-primary-light);
+    color: var(--color-primary-light);
+  }
+
+  :host([data-tool="true"]) .actions button[name="tool-toggle"] svg {
+    stroke: var(--color-primary-light);
+  }
 </style>
 <section>
-  <iy-button-group class="layout-toggle" data-active="grid">
-    <button name="grid">
+  <div class="actions">
+    <button name="tool-toggle" class="--tertiary">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="7" height="7"></rect>
-        <rect x="14" y="3" width="7" height="7"></rect>
-        <rect x="14" y="14" width="7" height="7"></rect>
-        <rect x="3" y="14" width="7" height="7"></rect>
+        <polyline points="16 18 22 12 16 6"></polyline>
+        <polyline points="8 6 2 12 8 18"></polyline>
       </svg>
     </button>
-    <button name="lines">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="3" width="18" height="7"></rect>
-        <rect x="3" y="14" width="18" height="7"></rect>
-      </svg>
-    </button>
-  </iy-button-group>
+    <iy-button-group name="layout-toggle" data-active="grid">
+      <button class="--secondary" name="grid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
+      <button class="--secondary" name="lines">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="7"></rect>
+          <rect x="3" y="14" width="18" height="7"></rect>
+        </svg>
+      </button>
+    </iy-button-group>
+  </div>
   <slot name="title">Sandbox</slot>
-  <slot name="description"></slot>
-  <div>
-    <slot name="elements"></slot>
+<!--  <slot name="description"></slot>-->
+  <div class="elements">
+    <slot name="element"></slot>
   </div>
 </section>

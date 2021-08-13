@@ -31,6 +31,7 @@
         <li>
           <span>Sandbox</span>
           <ul>
+            <li><a href="/sandbox/fragments/component.html">Component</a></li>
             <li><a href="/sandbox/fragments/typography.html">Typography</a></li>
             <li><a href="/sandbox/fragments/data-entry.html">Data Entry</a></li>
             <li><a href="/sandbox/fragments/highlight.html">Highlight</a></li>
@@ -39,7 +40,7 @@
       </ul>
     </nav>
     <main class="page__content">
-      <iy-fragment data-trust="true" src="/sandbox/fragments/data-entry.html"></iy-fragment>
+      <iy-fragment data-trust="true" src="/sandbox/fragments/component.html"></iy-fragment>
     </main>
   </div>
 
@@ -51,7 +52,7 @@
       pageContent.setAttribute("src", e.target.href);
     };
 
-    links.forEach((link) => link.addEventListener("click", handleLinkClick))
+    links.forEach((link) => link.addEventListener("click", handleLinkClick));
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

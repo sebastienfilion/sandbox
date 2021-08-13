@@ -2,20 +2,16 @@
 
 <iy-sandbox id="data-entry-button">
   <h3 slot="title">Buttons</h3>
-  <div slot="elements"></div>
 </iy-sandbox>
-<section id="data-entry-input">
-  <h3>Input</h3>
-  <div class="sandbox">
-    <figure>
-      <label for="demo">
-        <span>Input Label</span>
-        <input id="demo" type="text">
-      </label>
-      <figcaption>Text Input</figcaption>
-    </figure>
-  </div>
-</section>
+<iy-sandbox id="data-entry-input">
+  <h3 slot="title">Input</h3>
+  <iy-sandbox-figure slot="element" data-title="Simple Text Input">
+    <label for="data-entry-input__text">Name</label><input id="data-entry-input__text" type="text">
+  </iy-sandbox-figure>
+  <iy-sandbox-figure slot="element" data-title="Checkbox Input">
+    <input id="data-entry-input__checkbox" type="checkbox"><label for="data-entry-input__checkbox">Blue</label>
+  </iy-sandbox-figure>
+</iy-sandbox>
 <template id="sandbox-icon">
   <svg
       stroke-linecap="round"
@@ -37,7 +33,7 @@
 
   const label = "Click Me!";
   const template = this.querySelector("template#sandbox-icon");
-  const sandbox = this.querySelector(`#data-entry-button [slot="elements"]`);
+  const sandbox = this.querySelector(`#data-entry-button`);
 
   [
     { label },
@@ -55,38 +51,36 @@
         ["--tertiary", "--pill"],
         ["--text"],
         ["--text", "--pill"],
-        ["--medium"],
-        ["--pill", "--medium"],
-        ["--secondary", "--medium"],
-        ["--secondary", "--pill", "--medium"],
-        ["--tertiary", "--medium"],
-        ["--tertiary", "--pill", "--medium"],
-        ["--text", "--medium"],
-        ["--text", "--pill", "--medium"],
-        ["--large"],
-        ["--pill", "--large"],
-        ["--secondary", "--large"],
-        ["--secondary", "--pill", "--large"],
-        ["--tertiary", "--large"],
-        ["--tertiary", "--pill", "--large"],
-        ["--text", "--large"],
-        ["--text", "--pill", "--large"],
-        ["--huge"],
-        ["--pill", "--huge"],
-        ["--secondary", "--huge"],
-        ["--secondary", "--pill", "--huge"],
-        ["--tertiary", "--huge"],
-        ["--tertiary", "--pill", "--huge"],
-        ["--text", "--huge"],
-        ["--text", "--pill", "--huge"]
+        // ["--medium"],
+        // ["--pill", "--medium"],
+        // ["--secondary", "--medium"],
+        // ["--secondary", "--pill", "--medium"],
+        // ["--tertiary", "--medium"],
+        // ["--tertiary", "--pill", "--medium"],
+        // ["--text", "--medium"],
+        // ["--text", "--pill", "--medium"],
+        // ["--large"],
+        // ["--pill", "--large"],
+        // ["--secondary", "--large"],
+        // ["--secondary", "--pill", "--large"],
+        // ["--tertiary", "--large"],
+        // ["--tertiary", "--pill", "--large"],
+        // ["--text", "--large"],
+        // ["--text", "--pill", "--large"],
+        // ["--huge"],
+        // ["--pill", "--huge"],
+        // ["--secondary", "--huge"],
+        // ["--secondary", "--pill", "--huge"],
+        // ["--tertiary", "--huge"],
+        // ["--tertiary", "--pill", "--huge"],
+        // ["--text", "--huge"],
+        // ["--text", "--pill", "--huge"]
       ].forEach((classList) => {
         const figure = document.createElement("iy-sandbox-figure");
         // const caption = document.createElement("figcaption");
         const button = document.createElement("button");
         // const highlight = document.createElement("iy-highlight");
         let svg;
-
-        button.slot = "element";
 
         if (icon === 0) {
           button.textContent = label;
@@ -134,6 +128,8 @@
         // slot.textContent = html.trim();
 
         // highlight.appendChild(slot);
+
+        figure.slot = "element";
 
         figure.appendChild(button);
 

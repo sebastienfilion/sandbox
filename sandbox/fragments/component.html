@@ -1,0 +1,115 @@
+<h2>Component</h2>
+
+<iy-sandbox>
+  <h3 slot="title">Bluebird</h3>
+  <p slot="description">
+    The most basic component can be created with the <code>factorizeComponent</code> function.
+    The Bluebird example is a composed component.
+  </p>
+  <iy-sandbox-figure  slot="element" data-title="Simple Stepper">
+    <iy-bluebird></iy-bluebird>
+  </iy-sandbox-figure>
+  <iy-sandbox-figure  slot="element" data-title="Stepper with attributes">
+    <iy-bluebird value="3"></iy-bluebird>
+  </iy-sandbox-figure>
+  <iy-sandbox-figure  slot="element" data-title="Useless Stepper">
+    <iy-cardinal value="3"></iy-cardinal>
+  </iy-sandbox-figure>
+</iy-sandbox>
+
+<link rel="stylesheet" href="/core/global.css">
+<script src="/sandbox/sandbox/sandbox.js" type="module"></script>
+<script src="/sandbox/sandbox/sandbox-figure.js" type="module"></script>
+<script>
+  const s = window.document.querySelector('script[data-script-name="bluebird"]');
+  const p = window.document.querySelector('p[slot="description"]')
+  const h = window.document.createElement("iy-highlight");
+  h.textContent = s.innerHTML;
+  h.slot = "description"
+  p.insertAdjacentElement("afterend", h);
+</script>
+<script data-script-name="bluebird" type="module">
+  import { factorizeComponent, fetchTemplate, useAttributes, useCallbacks, useShadow, useTemplate } from "/web-component/library/component2.js";
+
+  window.customElements.define(
+    "iy-bluebird",
+    factorizeComponent(
+      (e, { value }) => {
+        if (!e.elements) return;
+
+        e.elements.count.textContent = String(value);
+      },
+      { value: 0, title: "Unknown" },
+      useShadow(),
+      useTemplate(
+        fetchTemplate("/sandbox/fragments/demo.html"),
+        {
+          addButton: (e) => e.shadowRoot.querySelector('button[name="add"]'),
+          count: (e) => e.shadowRoot.querySelector(".count"),
+          subtractButton: (e) => e.shadowRoot.querySelector('button[name="subtract"]')
+        }
+      ),
+      useAttributes(
+        ({ oldValue, value }) => (oldValue !== value && value >= 0) ? ({ value }) : false,
+        {
+          "value": Number,
+        }
+      ),
+      useCallbacks({
+        connectedCallback: (e, render) => {
+          e._handleAddButtonClick = render((e, { value }) => ({ value: ++value }));
+          e._handleSubtractButtonClick = render((e, { value }) => ({ value: --value }));
+
+          e.elements.addButton.addEventListener("click", e._handleAddButtonClick);
+          e.elements.subtractButton.addEventListener("click", e._handleSubtractButtonClick);
+        }
+      })
+    )
+  );
+  window.customElements.define(
+    "iy-cardinal",
+    factorizeComponent(
+      (element, { value }) => {
+        const span = element.querySelector("span");
+        span.textContent = value;
+      },
+      { value: 0 },
+      useCallbacks({
+        connectedCallback: (element, render) => {
+          const span = window.document.createElement("span");
+          const button = window.document.createElement("button");
+          button.textContent = "Add";
+          element.appendChild(span);
+          element.appendChild(button);
+          button.addEventListener("click", render((e, { value }) => ({ value: ++value })));
+        }
+      }),
+      (factorize) => {
+        factorize((Component, render) => {
+          Object.defineProperty(
+            Component,
+            "observedAttributes",
+            {
+              enumerable: true,
+              value: ["value"],
+            },
+          );
+
+          Object.defineProperty(
+            Component.prototype,
+            "attributeChangedCallback",
+            {
+              enumerable: true,
+              value(name, oldValue, value) {
+                this[Symbol.for("iy-state")][name] = value;
+                render(this, Object.assign({}, this[Symbol.for("iy-state")]));
+              },
+            },
+          );
+
+          return Component;
+        });
+      }
+    )
+  );
+</script>

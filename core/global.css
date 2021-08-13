@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: auto;
+  width: 100vw;
 }
 
 html {
@@ -125,6 +126,7 @@ h6 {
       "top top top"
       "left content content";
   min-height: 100%;
+  width: 100vw;
 }
 
 .page__top-navigation {
@@ -207,3 +209,4 @@ h6 {
 .page__content h2:first-child {
   margin-top: 0;
 }
+

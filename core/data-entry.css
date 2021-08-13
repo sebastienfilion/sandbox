@@ -1,10 +1,10 @@
 button {
   align-items: center;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.625rem;
   box-sizing: border-box;
   background-color: var(--color-primary-default);
-  color: var(--monochrome-100);
+  color: var(--color-background);
   display: flex;
   font-family: inherit;
   font-size: 0.8125rem;
@@ -12,7 +12,7 @@ button {
   height: 2.5rem;
   justify-content: center;
   letter-spacing: 0.025rem;
-  padding: 0 1.25rem;
+  padding: 0 1rem;
   outline: none;
   white-space: nowrap;
 }
@@ -25,7 +25,7 @@ button svg, button img {
 
 button svg {
   fill: none;
-  stroke: var(--monochrome-100);
+  stroke: var(--color-background);
 }
 
 button > svg:first-child ~ *,
@@ -123,19 +123,17 @@ button.--pill.--huge {
 }
 
 button.--secondary {
-  background-color: transparent;
-  border: 2px solid var(--color-primary-default);
-  color: var(--color-primary-default);
+  background-color: var(--monochrome-400);
+  color: var(--color-body-text);
 }
 
 button.--secondary svg {
-  stroke: var(--color-primary-default);
+  stroke: var(--color-body-text);
 }
 
 button.--secondary:active {
-  background-color: transparent !important;
-  border: 2px solid var(--color-high-contrast) !important;
-  color: var(--color-high-contrast) !important;
+  background-color: var(--color-high-contrast) !important;
+  color: var(--color-low-contrast) !important;
 }
 
 button.--secondary:active svg {
@@ -143,28 +141,22 @@ button.--secondary:active svg {
 }
 
 button.--secondary:hover {
-  background-color: transparent;
-  border: 2px solid var(--color-primary-dark);
-  color: var(--color-primary-dark);
-}
-
-button.--secondary:hover svg {
-  stroke: var(--color-primary-dark);
+  background-color: var(--monochrome-500);
 }
 
 button.--tertiary {
   background-color: transparent;
-  border: 2px solid var(--color-separator);
-  color: var(--color-primary-default);
+  border: 1px solid var(--color-separator);
+  color: var(--color-body-text);
 }
 
 button.--tertiary svg {
-  stroke: var(--color-primary-default);
+  stroke: var(--color-body-text);
 }
 
 button.--tertiary:active {
   background-color: transparent !important;
-  border: 2px solid var(--color-high-contrast) !important;
+  border: 1px solid var(--color-high-contrast) !important;
   color: var(--color-high-contrast) !important;
 }
 
@@ -174,22 +166,22 @@ button.--tertiary:active svg {
 
 button.--tertiary:hover {
   background-color: transparent;
-  border: 2px solid var(--color-placeholder) !important;
-  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary-dark) !important;
+  color: var(--color-primary-dark) !important;
 }
 
 button.--tertiary:hover svg {
-  stroke: var(--color-primary-dark);
+  stroke: var(--color-high-contrast);
 }
 
 button.--text {
   background-color: transparent;
   border: none;
-  color: var(--color-primary-default);
+  color: var(--color-body-text);
 }
 
 button.--text svg {
-  stroke: var(--color-primary-default);
+  stroke: var(--color-body-text);
 }
 
 button.--text:active {
@@ -212,15 +204,59 @@ button.--text:hover svg {
   stroke: var(--color-primary-dark);
 }
 
+label:empty {
+  color: var(--color-label);
+  font-size: 0.75rem;
+}
+
+input[disabled] {
+  opacity: 0.5;
+}
+
+input[type="text"] {
+  background-color: var(--color-input);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: var(--color-label);
+  font-size: 0.75rem;
+  height: 2.5rem;
+  padding: 0 1rem;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  background-color: red;
+  border-color: var(--color-label);
+}
+
+input[type="checkbox"] {
+  display: none;
+  visibility: hidden;
+}
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  line-height: 24px;
+}
+
+input[type="checkbox"] + label:before {
+  border: 1px solid var(--color-label);
+  border-radius: 8px;
+  content: "";
+  display: inline-block;
+  margin-right: 8px;
+  height: 24px;
+  width: 24px;
+}
+
+input[type="checkbox"]:checked + label:before {
+  background-color: var(--color-input);
+  border-color: transparent;
+  content: url("./assets/check.svg");
+}
+
 @media (prefers-color-scheme: dark) {
-  button {
-    color: var(--color-primary-dark);
-  }
-
-  button svg {
-    stroke: var(--color-primary-dark);
-  }
-
   button:hover,
   button.--active,
   button[data-active] {
@@ -231,18 +267,24 @@ button.--text:hover svg {
     box-shadow: 0 0 0 8px var(--color-input);
   }
 
-  button.--secondary:hover {
-    background-color: transparent;
-    border: 2px solid var(--color-primary-light);
-    color: var(--color-primary-light);
+  button.--secondary {
+    background-color: var(--monochrome-700);
   }
 
-  button.--secondary:hover svg {
-    stroke: var(--color-primary-light);
+  button.--secondary:hover,
+  button.--secondary.--active,
+  button.--secondary[data-active] {
+    background-color: var(--monochrome-600);
+  }
+
+  button.--tertiary:active {
+    border: 1px solid var(--color-high-contrast) !important;
+    color: var(--color-high-contrast) !important;
   }
 
   button.--tertiary:hover {
-    color: var(--color-primary-light);
+    border: 1px solid var(--color-primary-light) !important;
+    color: var(--color-primary-light) !important;
   }
 
   button.--secondary:active svg,
