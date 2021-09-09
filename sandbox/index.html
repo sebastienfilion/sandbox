@@ -31,16 +31,16 @@
         <li>
           <span>Sandbox</span>
           <ul>
-            <li><a href="/sandbox/fragments/component.html">Component</a></li>
-            <li><a href="/sandbox/fragments/typography.html">Typography</a></li>
-            <li><a href="/sandbox/fragments/data-entry.html">Data Entry</a></li>
-            <li><a href="/sandbox/fragments/highlight.html">Highlight</a></li>
+            <li><a href="./fragments/component.html">Component</a></li>
+            <li><a href="./fragments/typography.html">Typography</a></li>
+            <li><a href="./fragments/data-entry.html">Data Entry</a></li>
+            <li><a href="./fragments/highlight.html">Highlight</a></li>
           </ul>
         </li>
       </ul>
     </nav>
     <main class="page__content">
-      <iy-fragment data-trust="true" src="/sandbox/fragments/component.html"></iy-fragment>
+      <iy-fragment data-trust="true" data-src="./fragments/component.html"></iy-fragment>
     </main>
   </div>
 
@@ -49,7 +49,7 @@
     const links = document.querySelectorAll("nav.page__side-navigation > ul > li a");
     const handleLinkClick = (e) => {
       e.preventDefault();
-      pageContent.setAttribute("src", e.target.href);
+      pageContent.setAttribute("data-src", e.target.href);
     };
 
     links.forEach((link) => link.addEventListener("click", handleLinkClick));
@@ -58,7 +58,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/core/global.css">
+  <link rel="stylesheet" href="../core/global.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
   <script src="../core/fragment/fragment.js" type="module"></script>
 </body>

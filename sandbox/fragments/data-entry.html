@@ -25,11 +25,11 @@
     ></polygon>
   </svg>
 </template>
-<link rel="stylesheet" href="/core/data-entry.css">
+<link rel="stylesheet" href="../../core/data-entry.css">
 <script src="/sandbox/sandbox/sandbox.js" type="module"></script>
 <script src="/sandbox/sandbox/sandbox-figure.js" type="module"></script>
 <script type="module">
-  import "/core/highlight/highlight.js";
+  import "../../core/highlight/highlight.js";
 
   const label = "Click Me!";
   const template = this.querySelector("template#sandbox-icon");
@@ -128,6 +128,8 @@
         // slot.textContent = html.trim();
 
         // highlight.appendChild(slot);
+
+        figure.dataset.withStates = "true";
 
         figure.slot = "element";
 

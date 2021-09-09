@@ -52,7 +52,8 @@
     margin: 32px 0;
   }
 
-  .tools, .tools iy-highlight {
+  .tools,
+  .tools iy-highlight {
     width: 100%;
   }
 
@@ -72,6 +73,62 @@
     margin-right: 8px;
   }
 
+  .events {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 40px;
+    display: flex;
+    margin: 32px 0;
+    padding: 8px;
+    overflow-x: scroll;
+    width: 100%;
+  }
+
+  .events::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    margin: 3px;
+  }
+
+  .events::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+    opacity: 0.5;
+  }
+
+  .events:hover::-webkit-scrollbar-thumb {
+    opacity: 1;
+  }
+
+  .events>div {
+    align-items: center;
+    border: 1px solid var(--color-separator);
+    border-radius: 3px;
+    display: flex;
+    font-size: 0.8125rem;
+    justify-content: center;
+    padding: 3px 8px;
+    margin: 0 3px;
+    white-space: nowrap;
+  }
+
+  .events>div.render {
+    background-color: #EAF9DE;
+    border: 1px solid #CBFFAE;
+    color: #067306;
+  }
+
+  .events>div.--slow {
+    background-color: #FFF8E9;
+    border: 1px solid #FFE6B0;
+    color: #6E5523;
+  }
+
+  .events>div.--very-slow {
+    background-color: #FFF2F1;
+    border: 1px solid #FFC3C0;
+    color: #8B1200;
+  }
 </style>
 <figure>
   <slot name="element"></slot>

@@ -2,29 +2,26 @@
 
 <iy-sandbox data-layout="lines">
   <h3 slot="title">JavaScript</h3>
-  <div slot="elements">
-    <iy-sandbox-figure data-title="Simple Functions">
-      <iy-highlight data-language="javascript">const add = (x, y) => x + y;
-const sum = (xs) => xs.reduce(add, 0);
+  <iy-sandbox-figure slot="element" data-title="Simple Functions">
+    <iy-highlight data-language="javascript">const add = (x, y) => x + y;
+      const sum = (xs) => xs.reduce(add, 0);
 
-const t = sum([42, 24, 12]);
+      const t = sum([42, 24, 12]);
 
-// t === 78</iy-highlight>
-    </iy-sandbox-figure>
-    <iy-sandbox-figure data-title="Function Chain">
-      <iy-highlight data-language="javascript">fetch("/demo.html")
-  .then((response) => response.json())
-  .then((html) => {
-    e.innerHTML = html;
-  });</iy-highlight>
-    </iy-sandbox-figure>
-  </div>
+      // t === 78</iy-highlight>
+  </iy-sandbox-figure>
+  <iy-sandbox-figure slot="element" data-title="Function Chain">
+    <iy-highlight data-language="javascript">fetch("/demo.html")
+      .then((response) => response.json())
+      .then((html) => {
+      e.innerHTML = html;
+      });</iy-highlight>
+  </iy-sandbox-figure>
 </iy-sandbox>
 <iy-sandbox data-layout="lines">
   <h3 slot="title">HTML</h3>
-  <div slot="elements">
-    <iy-sandbox-figure data-title="Simple Document">
-  <iy-highlight data-language="xml">&lt;!doctype html&gt;
+  <iy-sandbox-figure slot="element" data-title="Simple Document">
+    <iy-highlight data-language="xml">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
 &lt;meta charset="UTF-8"&gt;
@@ -36,12 +33,10 @@ const t = sum([42, 24, 12]);
 &lt;/head&gt;
 &lt;body&gt;&lt;/body&gt;
 &lt;/html&gt;</iy-highlight>
-    </iy-sandbox-figure>
-  </div>
+  </iy-sandbox-figure>
 </iy-sandbox>
 
-<link rel="stylesheet" href="/core/global.css">
-<script src="/core/highlight/highlight.js" type="module"></script>
+<script src="../../core/highlight/highlight.js" type="module"></script>
 <script src="/sandbox/sandbox/sandbox.js" type="module"></script>
 <script src="/sandbox/sandbox/sandbox-figure.js" type="module"></script>
 

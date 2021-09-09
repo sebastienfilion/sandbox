@@ -203,6 +203,7 @@ h6 {
 
 .page__content {
   grid-area: content;
+  overflow-x: hidden;
   padding: 64px;
 }
 

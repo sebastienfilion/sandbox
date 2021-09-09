@@ -11,7 +11,7 @@
   max-height: 25rem;
   padding: 16px;
   overflow: auto;
-
+  width: fit-content;
 }
 
 :host pre,
@@ -28,9 +28,8 @@
   box-sizing: border-box;
   display: block;
   height: inherit;
-  /*height: -webkit-fill-available;*/
+  outline: none;
   padding: 8px;
-  width: fit-content;
 }
 
 :host::-webkit-scrollbar {
